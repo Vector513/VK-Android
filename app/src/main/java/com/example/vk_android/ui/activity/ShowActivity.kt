@@ -1,4 +1,4 @@
-package com.example.vk_android
+package com.example.vk_android.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,38 +10,30 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.vk_android.ui.theme.VKAndroidTheme
 
-class MainActivity : ComponentActivity() {
+class ShowActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val text = intent.getStringExtra(EXTRA_TEXT).orEmpty()
+
         setContent {
             VKAndroidTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                ShowScreen(text = text)
             }
         }
+    }
+
+    companion object {
+        const val EXTRA_TEXT = "com.example.vk_android.ui.activity.EXTRA_TEXT"
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    VKAndroidTheme {
-        Greeting("Android")
+private fun ShowScreen(text: String) {
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Text(text = text, modifier = Modifier.padding(innerPadding))
     }
 }
