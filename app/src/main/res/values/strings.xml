@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">VK-Android</string>
+    <string name="app_name" translatable="false">VK-Android</string>
+    <string name="main_activity_button_text">Open second Activity</string>
+    <string name="main_activity_call_friend_button_text">Call a friend</string>
+    <string name="main_activity_share_button_text">Share the text</string>
 </resources>
